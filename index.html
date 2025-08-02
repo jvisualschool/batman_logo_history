@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A History of Batman logo - SVG Animation Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #60a5fa, #93c5fd, #dbeafe);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+        }
+
+        @keyframes titleGlow {
+            0% {
+                background-position: 0% 50%;
+                filter: brightness(1);
+            }
+            100% {
+                background-position: 100% 50%;
+                filter: brightness(1.2);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            color: #cccccc;
+        }
+
+        .batman-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            perspective: 1000px;
+        }
+
+        .batman-wrapper {
+            position: relative;
+            transition: transform 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .batman-wrapper:hover {
+            transform: scale(1.05) rotateY(5deg);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .batman-svg {
+            max-width: 100%;
+            height: auto;
+            background: radial-gradient(circle, rgba(148, 163, 184, 0.1) 0%, rgba(71, 85, 105, 0.05) 70%, transparent 100%);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.5s ease;
+            /* TV 프레임 효과 */
+            border: 8px solid #2d3748;
+            box-shadow: 
+                0 0 0 4px #4a5568,
+                0 0 0 8px #2d3748,
+                0 0 20px rgba(0, 0, 0, 0.5),
+                inset 0 0 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        /* TV 스크린 효과 */
+        .batman-svg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.03) 50%,
+                transparent 100%
+            );
+            pointer-events: none;
+            border-radius: 7px;
+        }
+
+        /* TV 코너 볼트 */
+        .batman-wrapper::before,
+        .batman-wrapper::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #1a202c 30%, #2d3748 70%);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .batman-wrapper::before {
+            top: 10px;
+            left: 10px;
+        }
+
+        .batman-wrapper::after {
+            top: 10px;
+            right: 10px;
+        }
+
+        /* 하단 볼트 */
+        .batman-wrapper {
+            position: relative;
+        }
+
+        .batman-wrapper .bottom-bolts::before,
+        .batman-wrapper .bottom-bolts::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #1a202c 30%, #2d3748 70%);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .batman-wrapper .bottom-bolts::before {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .batman-wrapper .bottom-bolts::after {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .feature-description {
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1.5rem;
+            min-width: 150px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            display: block;
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+
+        .tech-showcase {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #ffd700;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .batman-container {
+                margin: 2rem 0;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+
+        /* Timeline Styles */
+        .timeline-container {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+
+        .timeline {
+            position: relative;
+            width: 100%;
+            height: 80px;
+            margin: 2rem 0;
+        }
+
+        .timeline-bar {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, #60a5fa, #93c5fd, #60a5fa);
+            border-radius: 2px;
+            transform: translateY(-50%);
+            box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #60a5fa;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #0f172a;
+            box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3);
+        }
+
+        .timeline-year::before {
+            content: attr(data-year);
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #cccccc;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .timeline-year:hover::before,
+        .timeline-year.active::before {
+            opacity: 1;
+        }
+
+        .timeline-year::after {
+            content: attr(data-title);
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: #60a5fa;
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.9);
+            padding: 2px 6px;
+            border-radius: 4px;
+            max-width: 120px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .timeline-year:hover {
+            transform: translateY(-50%) translateX(-50%) scale(1.5);
+            background: #93c5fd;
+            box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.5), 0 0 20px rgba(96, 165, 250, 0.7);
+            z-index: 10;
+        }
+
+        .timeline-year:hover::before {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+
+        .timeline-year:hover::after {
+            opacity: 1;
+            top: -55px;
+        }
+
+        .timeline-year.active {
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.7);
+            transform: translateY(-50%) translateX(-50%) scale(1.3);
+        }
+
+        .timeline-year.active::after {
+            opacity: 1 !important;
+            top: -55px !important;
+        }
+
+
+        .timeline-controls {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .control-button {
+            background: rgba(96, 165, 250, 0.2);
+            border: 1px solid #60a5fa;
+            color: #60a5fa;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .control-button:hover {
+            background: rgba(96, 165, 250, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .control-button:active {
+            transform: translateY(0);
+        }
+
+        .paused {
+            animation-play-state: paused !important;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                height: 120px;
+            }
+            
+            .timeline-bar {
+                left: 15px;
+                right: 15px;
+            }
+            
+            .timeline-year {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .timeline-year::before {
+                font-size: 0.6rem;
+                bottom: -25px;
+                writing-mode: vertical-rl;
+                text-orientation: mixed;
+                opacity: 0;
+            }
+            
+            .timeline-year:hover::before,
+            .timeline-year.active::before {
+                opacity: 1;
+            }
+            
+            .timeline-year::after {
+                font-size: 0.5rem;
+                max-width: 60px;
+                top: -60px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .timeline {
+                height: 140px;
+                overflow-x: auto;
+                padding-bottom: 20px;
+            }
+            
+            .timeline-container {
+                position: relative;
+            }
+            
+            .timeline-bar {
+                width: 600px;
+                position: relative;
+                left: 0;
+                right: auto;
+                margin: 0 15px;
+            }
+            
+            .timeline-year {
+                width: 14px;
+                height: 14px;
+                position: absolute;
+            }
+            
+            .timeline-year::before {
+                font-size: 0.55rem;
+                bottom: -20px;
+                writing-mode: horizontal-tb;
+                text-orientation: mixed;
+                transform: translateX(-50%) rotate(-45deg);
+                white-space: nowrap;
+                opacity: 0;
+            }
+            
+            .timeline-year:hover::before,
+            .timeline-year.active::before {
+                opacity: 1;
+            }
+            
+            .timeline-year::after {
+                font-size: 0.45rem;
+                max-width: 50px;
+                top: -50px;
+            }
+            
+            /* 스크롤 힌트 추가 */
+            .timeline-container::after {
+                content: "← 좌우로 스크롤하세요 →";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 0.7rem;
+                color: #94a3b8;
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">A History of Batman logo</h1>
+        <p class="subtitle">SVG의 강력한 애니메이션 기능을 보여주는 배트맨 로고 변화</p>
+        
+        <div class="batman-container">
+            <div class="batman-wrapper">
+                <object class="batman-svg" data="batman.svg" type="image/svg+xml" id="batmanLogo">
+                    <img src="batman.svg" alt="Batman Logo Animation" class="batman-svg">
+                </object>
+                <div class="bottom-bolts"></div>
+            </div>
+        </div>
+
+
+
+
+        <div class="timeline-container">
+            <div class="timeline">
+                <div class="timeline-bar"></div>
+                <div class="timeline-year" data-year="1965" data-title="Batman" data-file="batman-1965.svg" style="left: 8%;"></div>
+                <div class="timeline-year" data-year="1966" data-title="Batman" data-file="batman-1966.svg" style="left: 12%;"></div>
+                <div class="timeline-year" data-year="1977" data-title="Batman" data-file="batman-1977.svg" style="left: 20%;"></div>
+                <div class="timeline-year" data-year="1983" data-title="Batman and the Outsiders" data-file="batman-1983.svg" style="left: 25%;"></div>
+                <div class="timeline-year" data-year="1986" data-title="Batman: Legends" data-file="batman-1986.svg" style="left: 30%;"></div>
+                <div class="timeline-year" data-year="1992" data-title="Batman Returns" data-file="batman-1992.svg" style="left: 36%;"></div>
+                <div class="timeline-year" data-year="1993" data-title="Batman Knighfall" data-file="batman-1993.svg" style="left: 38%;"></div>
+                <div class="timeline-year" data-year="1995" data-title="Batman Forever" data-file="batman-1995-forever.svg" style="left: 42%;"></div>
+                <div class="timeline-year" data-year="1995" data-title="Batman Chronicles" data-file="batman-1995-chronicles.svg" style="left: 44%;"></div>
+                <div class="timeline-year" data-year="1998" data-title="The Batman Chronicles" data-file="batman-1998.svg" style="left: 50%;"></div>
+                <div class="timeline-year" data-year="1999" data-title="Batman Beyond" data-file="batman-1999.svg" style="left: 52%;"></div>
+                <div class="timeline-year" data-year="2001" data-title="Batman Vengence" data-file="batman-2001.svg" style="left: 58%;"></div>
+                <div class="timeline-year" data-year="2003" data-title="Batman Gothom Heights" data-file="batman-2003-gothom.svg" style="left: 62%;"></div>
+                <div class="timeline-year" data-year="2003" data-title="Batman Dead End" data-file="batman-2003-dead-end.svg" style="left: 64%;"></div>
+                <div class="timeline-year" data-year="2005" data-title="Batman Begins" data-file="batman-2005.svg" style="left: 70%;"></div>
+                <div class="timeline-year" data-year="2008" data-title="The Dark Knight" data-file="batman-2008.svg" style="left: 80%;"></div>
+            </div>
+            <div class="timeline-controls">
+                <button class="control-button" id="playPause">⏸️ 애니메이션 정지</button>
+                <button class="control-button" id="resetAnimation">🔄 처음부터</button>
+            </div>
+        </div>
+
+        <p style="margin-top: 3rem; text-align: center; font-size: 0.9rem; opacity: 0.7; color: #94a3b8;">
+            참고: <a href="http://tavmjong.free.fr/blog/?p=1262" target="_blank" rel="noopener noreferrer" style="color: #60a5fa; text-decoration: none; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.textDecoration='underline'" onmouseout="this.style.opacity='0.8'; this.style.textDecoration='none'">http://tavmjong.free.fr/blog/?p=1262</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="history.html" style="color: #60a5fa; text-decoration: none; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'; this.style.textDecoration='underline'" onmouseout="this.style.opacity='0.8'; this.style.textDecoration='none'">[작업 과정]</a>
+        </p>
+    </div>
+
+    <script>
+        // 배트맨 로고 파일 전환 스크립트
+        document.addEventListener('DOMContentLoaded', function() {
+            let isShowingOriginal = true;
+            let currentActiveYear = null;
+            let isTransitioning = false;
+            let progressInterval = null;
+
+            const batmanLogo = document.getElementById('batmanLogo');
+            const playPauseBtn = document.getElementById('playPause');
+            const resetBtn = document.getElementById('resetAnimation');
+
+            // 특정 연도 로고로 전환
+            function showYearLogo(yearElement) {
+                // 이미 전환 중이면 무시
+                if (isTransitioning) return;
+                
+                isTransitioning = true;
+                const fileName = yearElement.dataset.file;
+                
+                // 애니메이션 진행 표시 정지
+                stopProgressAnimation();
+                
+                // 기존 활성 연도 제거
+                if (currentActiveYear) {
+                    currentActiveYear.classList.remove('active');
+                }
+                
+                // 새로운 활성 연도 설정
+                yearElement.classList.add('active');
+                currentActiveYear = yearElement;
+                
+                // SVG 파일 변경
+                batmanLogo.data = fileName;
+                
+                // 상태 업데이트
+                isShowingOriginal = false;
+                playPauseBtn.textContent = '▶️ 자동 애니메이션 재생';
+                
+                // 전환 완료 후 플래그 해제
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 600); // transition 시간보다 약간 길게
+            }
+
+            // 원본 애니메이션으로 복귀
+            function showOriginalAnimation() {
+                // 활성 연도 제거
+                if (currentActiveYear) {
+                    currentActiveYear.classList.remove('active');
+                    currentActiveYear = null;
+                }
+                
+                // 원본 애니메이션 파일로 복귀
+                batmanLogo.data = 'batman.svg';
+                
+                // 상태 업데이트
+                isShowingOriginal = true;
+                playPauseBtn.textContent = '⏸️ 애니메이션 정지';
+                
+                // 연도 진행 표시 시작
+                startProgressAnimation();
+            }
+
+            // 연도 진행 표시 시작 (1초 앞서 시작하도록 수정)
+            function startProgressAnimation() {
+                // 기존 인터벌 정리
+                if (progressInterval) {
+                    clearInterval(progressInterval);
+                }
+                
+                let currentIndex = 0;
+                const animationDuration = 32000; // 32초
+                const totalSteps = 16; // 16개 연도
+                const stepDuration = animationDuration / totalSteps; // 2초씩
+                
+                // 즉시 첫 번째 연도 활성화
+                document.querySelectorAll('.timeline-year').forEach((year, index) => {
+                    year.classList.toggle('active', index === 0);
+                });
+                
+                // 1초 후에 두 번째 연도로 이동 (SVG 애니메이션보다 1초 앞서 진행)
+                setTimeout(() => {
+                    currentIndex = 1;
+                    document.querySelectorAll('.timeline-year').forEach((year, index) => {
+                        year.classList.toggle('active', index === 1);
+                    });
+                    currentIndex = 2;
+                    
+                    progressInterval = setInterval(() => {
+                        if (currentIndex < totalSteps) {
+                            // 현재 연도 활성화
+                            document.querySelectorAll('.timeline-year').forEach((year, index) => {
+                                year.classList.toggle('active', index === currentIndex);
+                            });
+                            currentIndex++;
+                        } else {
+                            // 애니메이션 완료, 처음부터 다시 시작
+                            currentIndex = 0;
+                            document.querySelectorAll('.timeline-year').forEach((year, index) => {
+                                year.classList.toggle('active', index === 0);
+                            });
+                            // 1초 후 다시 두 번째로
+                            setTimeout(() => {
+                                currentIndex = 1;
+                                document.querySelectorAll('.timeline-year').forEach((year, index) => {
+                                    year.classList.toggle('active', index === 1);
+                                });
+                                currentIndex = 2;
+                            }, 1000);
+                        }
+                    }, stepDuration);
+                }, 1000); // 1초 후 두 번째 연도로 이동
+            }
+
+            // 연도 진행 표시 정지
+            function stopProgressAnimation() {
+                if (progressInterval) {
+                    clearInterval(progressInterval);
+                    progressInterval = null;
+                }
+                
+                // 모든 연도 비활성화
+                document.querySelectorAll('.timeline-year').forEach(year => {
+                    year.classList.remove('active');
+                });
+            }
+
+            // 재생/정지 토글
+            function toggleAnimation() {
+                if (isShowingOriginal) {
+                    // 현재 애니메이션 중이면 정지 (첫 번째 로고로)
+                    const firstYear = document.querySelector('.timeline-year');
+                    showYearLogo(firstYear);
+                } else {
+                    // 정지 중이면 애니메이션 재생
+                    showOriginalAnimation();
+                }
+            }
+
+            // 이벤트 리스너 설정
+            function setupEventListeners() {
+                // 타임라인 연도 클릭
+                document.querySelectorAll('.timeline-year').forEach(yearElement => {
+                    yearElement.addEventListener('click', () => {
+                        showYearLogo(yearElement);
+                    });
+                });
+
+                // 컨트롤 버튼
+                playPauseBtn.addEventListener('click', toggleAnimation);
+                resetBtn.addEventListener('click', showOriginalAnimation);
+            }
+
+            // 스크롤 애니메이션
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // 카드들에 스크롤 애니메이션 적용
+            document.querySelectorAll('.feature-card, .tech-item').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // 초기화
+            setupEventListeners();
+            
+            // 페이지 로드 후 자동으로 연도 표시 시작 (지연 시간 제거)
+            setTimeout(() => {
+                if (isShowingOriginal) {
+                    startProgressAnimation();
+                }
+            }, 100); // 최소 지연으로 SVG 로드 대기
+        });
+    </script>
+</body>
+</html>

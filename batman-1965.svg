@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+  <title>Batman Logo - 1965</title>
+  <rect width="600" height="400" style="fill:white"/>
+  
+  <path d="M 256,213 C 245,181 206,187 234,262 147,181 169,71.2 233,18 220,56 235,81 283,88 285,78.7 286,69.3 288,60 289,61.3 290,62.7 291,64 291,64 297,63 300,63 303,63 309,64 309,64 310,62.7 311,61.3 312,60 314,69.3 315,78.7 317,88 365,82 380,56 367,18 431,71 453,181 366,262 394,187 356,181 344,213 328,185 309,184 300,284 291,184 272,185 256,213 Z" 
+        style="fill:black"/>
+  
+  <g style="font-size:32px;text-anchor:middle">
+    <text x="300" y="320">1965</text>
+  </g>
+  
+  <g style="font-size:24px;font-style:italic;text-anchor:middle">
+    <text x="300" y="350">Batman</text>
+  </g>
+  
+  <g style="font-size:20px;text-anchor:middle">
+    <text x="300" y="378">DC Comics</text>
+  </g>
+</svg>

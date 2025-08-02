@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+  <title>Batman Logo - 2003 Gothom Heights</title>
+  <rect width="600" height="400" style="fill:white"/>
+  
+  <path d="M 198,171 C 189,131 150,120 113,140 142,104 182,74.4 249,70.2 208,89 248,125 278,106 285,101 286,93.5 286,74.2 288,78.1 291,81.5 294,83.2 296,84.2 298,84.7 300,84.7 302,84.7 304,84.2 306,83.2 309,81.5 312,78.1 314,74.2 314,93.5 315,101 322,106 352,125 392,89 351,70.2 418,74.4 458,104 487,140 450,120 411,131 402,171 357,147 322,171 300,214 278,171 243,147 198,171 Z" 
+        style="fill:black"/>
+  
+  <g style="font-size:32px;text-anchor:middle">
+    <text x="300" y="320">2003</text>
+  </g>
+  
+  <g style="font-size:24px;font-style:italic;text-anchor:middle">
+    <text x="300" y="350">Batman Gothom Heights</text>
+  </g>
+  
+  <g style="font-size:20px;text-anchor:middle">
+    <text x="300" y="378">DC Comics</text>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+  <title>Batman Logo - 1983</title>
+  <rect width="600" height="400" style="fill:white"/>
+  
+  <path d="M 218,231 C 191,238 165,252 140,266 144,209 156,153 193,93.7 218,106 249,105 280,102 282,90.3 284,78.6 289,67.8 290,71.6 291,75.8 292,79.7 292,79.7 297,79.7 300,79.7 303,79.7 308,79.7 308,79.7 309,75.8 310,71.6 311,67.8 316,78.6 318,90.3 320,102 351,105 382,106 407,93.7 444,153 456,209 460,266 435,252 409,238 382,231 355,224 328,223 300,223 272,223 245,224 218,231 Z" 
+        style="fill:black"/>
+  
+  <g style="font-size:32px;text-anchor:middle">
+    <text x="300" y="320">1983</text>
+  </g>
+  
+  <g style="font-size:24px;font-style:italic;text-anchor:middle">
+    <text x="300" y="350">Batman and the Outsiders</text>
+  </g>
+  
+  <g style="font-size:20px;text-anchor:middle">
+    <text x="300" y="378">DC Comics</text>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">
+  <title>Batman Logo - 1999</title>
+  <rect width="600" height="400" style="fill:white"/>
+  
+  <path d="M 194,146 C 192,107 164,76.4 136,45.6 166,55.7 196,65.7 226,75.8 238,107 265,163 279,136 282,130 281,108 281,94.8 285,103 288,111 293,115 295,116 298,117 300,117 302,117 305,116 307,115 312,111 315,103 319,94.8 319,108 318,130 321,136 335,163 362,107 374,75.8 404,65.7 434,55.7 464,45.6 436,76.4 408,107 406,146 355,158 323,189 300,231 277,189 245,158 194,146 Z" 
+        style="fill:black"/>
+  
+  <g style="font-size:32px;text-anchor:middle">
+    <text x="300" y="320">1999</text>
+  </g>
+  
+  <g style="font-size:24px;font-style:italic;text-anchor:middle">
+    <text x="300" y="350">Batman Beyond</text>
+  </g>
+  
+  <g style="font-size:20px;text-anchor:middle">
+    <text x="300" y="378">Animation</text>
+  </g>
+</svg>

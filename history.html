@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batman Logo Animation - 프로젝트 작업 내역</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #60a5fa, #93c5fd, #dbeafe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #60a5fa;
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #60a5fa;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #93c5fd;
+            margin: 2rem 0 1rem 0;
+            padding-left: 1rem;
+            border-left: 4px solid #60a5fa;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            color: #fbbf24;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 0.5rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .step {
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #60a5fa;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .step-request {
+            font-style: italic;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+
+        .completed-task {
+            color: #34d399;
+            margin-left: 1rem;
+        }
+
+        .completed-task::before {
+            content: "✅ ";
+            margin-right: 0.5rem;
+        }
+
+        .file-structure {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin: 1rem 0;
+            border-left: 4px solid #60a5fa;
+            overflow-x: auto;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tech-title {
+            color: #60a5fa;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background: rgba(251, 191, 36, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .timeline-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            background: rgba(96, 165, 250, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .timeline-number {
+            background: #60a5fa;
+            color: #0f172a;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-to-main {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(96, 165, 250, 0.2);
+            border: 1px solid #60a5fa;
+            color: #60a5fa;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-to-main:hover {
+            background: rgba(96, 165, 250, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .back-to-main {
+                position: static;
+                display: inline-block;
+                margin-bottom: 2rem;
+            }
+            
+            .timeline-summary {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(96, 165, 250, 0.3);
+            z-index: 1000;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa, #93c5fd);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <a href="index.html" class="back-to-main">🦇 메인 페이지로</a>
+
+    <div class="container">
+        <h1>🦇 Batman Logo Animation</h1>
+        <p style="text-align: center; font-size: 1.2rem; color: #94a3b8; margin-bottom: 3rem;">프로젝트 작업 내역</p>
+
+        <div class="section">
+            <h2><span class="emoji">📋</span>프로젝트 개요</h2>
+            <p>배트맨 로고의 시대별 변화를 보여주는 SVG 애니메이션 웹페이지 제작</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">🎯</span>초기 요구사항</h2>
+            <ul>
+                <li>제목: <span class="highlight">"A History of Batman logo"</span> (초기: "A variety of Batman logo"에서 변경)</li>
+                <li>SVG의 강력함을 보여주는 애니메이션</li>
+                <li>참고 링크: <a href="http://tavmjong.free.fr/blog/?p=1262" style="color: #60a5fa;">http://tavmjong.free.fr/blog/?p=1262</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">📅</span>작업 일정 및 변경 내역</h2>
+            
+            <div class="timeline-summary">
+                <div class="timeline-item">
+                    <div class="timeline-number">1-3</div>
+                    <h4>기초 구축</h4>
+                    <p>HTML 구조, 타임라인, 파일 분리</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4-6</div>
+                    <h4>디자인 개선</h4>
+                    <p>다크 블루 테마, 시각 효과 조정</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">7-9</div>
+                    <h4>UX 최적화</h4>
+                    <p>성능 개선, 모바일 대응, 제목 변경</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">10-12</div>
+                    <h4>완성도 향상</h4>
+                    <p>TV 프레임, 동기화, UI 개선</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">1단계: 기본 페이지 구조 생성</div>
+                <div class="step-request">목표: HTML 페이지 생성 및 배트맨 로고 애니메이션 표시</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">기본 HTML 구조 생성 (index.html)</div>
+                <div class="completed-task">배트맨 로고 애니메이션 통합 (batman.svg)</div>
+                <div class="completed-task">반응형 CSS 디자인 적용</div>
+                <div class="completed-task">글래스모피즘 스타일링</div>
+                <div class="completed-task">통계 카드 (16개 로고, 32초 주기, 1965-2008년)</div>
+                <div class="completed-task">기능 설명 카드 4개 (모핑 애니메이션, 시대별 정보, 벡터 그래픽, 성능 최적화)</div>
+                <div class="completed-task">기술 쇼케이스 섹션 (SVG Animation, CSS Transforms, Backdrop Filter, GPU Acceleration)</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">2단계: 인터랙티브 타임라인 추가</div>
+                <div class="step-request">목표: 연도별 로고를 클릭해서 볼 수 있는 기능</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">황금색 타임라인 바 추가</div>
+                <div class="completed-task">16개 연도 포인트 배치 (1965-2008)</div>
+                <div class="completed-task">클릭 시 해당 로고로 변경 기능</div>
+                <div class="completed-task">애니메이션 컨트롤 버튼 (재생/정지, 리셋)</div>
+                <div class="completed-task">호버 효과 및 툴팁 표시</div>
+                <div class="completed-task">활성 상태 시각화 (빨간색 표시)</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">3단계: 페이지 간소화</div>
+                <div class="step-request">사용자 요청: 설명 상자들 제거하여 깔끔한 디자인</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">통계 섹션 제거</div>
+                <div class="completed-task">기능 설명 카드 제거</div>
+                <div class="completed-task">기술 쇼케이스 섹션 제거</div>
+                <div class="completed-task">핵심 요소만 유지 (제목, 로고, 타임라인, 참고링크)</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">4단계: 파일 분리 아키텍처 변경</div>
+                <div class="step-request">사용자 요청: 하나의 애니메이션 파일 대신 연도별 개별 파일로 분리</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">16개 개별 SVG 파일 생성 (batman-1965.svg ~ batman-2008.svg)</div>
+                <div class="completed-task">각 파일에 연도별 로고와 작품 정보 포함</div>
+                <div class="completed-task">JavaScript 로직 단순화 (파일 전환 방식)</div>
+                <div class="completed-task">복잡한 애니메이션 제어 로직 제거</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">5단계: 디자인 테마 변경</div>
+                <div class="step-request">사용자 요청: 다크 블루 테마 적용</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">배경: 다크 블루 그라데이션 (#0f172a → #1e293b → #334155)</div>
+                <div class="completed-task">제목: 밝은 파란색 그라데이션 (#60a5fa → #93c5fd → #dbeafe)</div>
+                <div class="completed-task">타임라인: 파란색 계열 (#60a5fa)</div>
+                <div class="completed-task">버튼: 파란색 테마로 통일</div>
+                <div class="completed-task">참고 링크: 박스 제거하고 텍스트만 표시</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">6단계: 시각적 효과 조정</div>
+                <div class="step-request">사용자 요청: 불필요한 효과 제거 및 개선</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">로고 테두리 효과 제거 (드롭 섀도우, 배경, 테두리)</div>
+                <div class="completed-task">빛나는 pulse 애니메이션 제거</div>
+                <div class="completed-task">선택된 연도 색상 변경 (주황색 → 백색)</div>
+                <div class="completed-task">활성 상태 시 툴팁 유지</div>
+                <div class="completed-task">로고 배경에 10% 회색 그라데이션 추가</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">7단계: 사용자 경험 개선</div>
+                <div class="step-request">사용자 요청: 번쩍거림 현상 해결</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">부드러운 전환 효과 추가 (transition: all 0.5s ease)</div>
+                <div class="completed-task">빠른 클릭 시 번쩍거림 방지를 위한 디바운싱 구현</div>
+                <div class="completed-task">전환 상태 체크 로직 추가 (isTransitioning 플래그)</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">8단계: 모바일 최적화</div>
+                <div class="step-request">사용자 요청: 모바일에서 타임라인 깨짐 현상 해결</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">태블릿 대응 (768px 이하): 타임라인 높이 증가, 연도 점 크기 축소, 연도 텍스트 세로 배치</div>
+                <div class="completed-task">모바일 대응 (480px 이하): 수평 스크롤 기능, 타임라인 바 고정 너비, 연도 텍스트 45도 회전, 스크롤 힌트</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">9단계: 제목 변경</div>
+                <div class="step-request">사용자 요청: 페이지 제목을 더 명확하게 변경</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">메인 제목 변경: "A variety of Batman logo" → "A History of Batman logo"</div>
+                <div class="completed-task">HTML title 태그 업데이트</div>
+                <div class="completed-task">문서 히스토리 업데이트</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">10단계: TV 프레임 효과 추가</div>
+                <div class="step-request">사용자 요청: 로고 주변에 레트로 TV 느낌의 프레임 적용</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">TV 스타일 프레임: 두꺼운 다크 그레이 테두리 (8px), 다층 box-shadow로 입체적 효과</div>
+                <div class="completed-task">네 모서리에 TV 특유의 둥근 볼트 4개</div>
+                <div class="completed-task">스크린 효과: 좌우로 흐르는 은은한 반사 효과, inset shadow로 깊이감</div>
+                <div class="completed-task">레트로 TV 디테일: 방사형 그라데이션 볼트, pointer-events: none</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">11단계: 타임라인 제목 제거 및 애니메이션 동기화</div>
+                <div class="step-request">사용자 요청: "배트맨 로고 타임라인" 제목 제거 및 애니메이션 진행 표시 추가</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">"배트맨 로고 타임라인" 제목 제거로 미니멀한 디자인</div>
+                <div class="completed-task">애니메이션 진행 표시기 구현: 주황색 진행 점, 32초 주기 16개 연도 순환</div>
+                <div class="completed-task">현재 로고와 일치하는 연도 백색 활성화</div>
+                <div class="completed-task">동기화 문제 해결: SVG 애니메이션과 타이밍 정확히 맞춤</div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">12단계: 사용자 경험 개선</div>
+                <div class="step-request">사용자 요청: 불필요한 요소 제거 및 시각적 개선</div>
+                <p><strong>완료된 작업:</strong></p>
+                <div class="completed-task">오렌지 진행 표시기 제거: 깔끔한 디자인을 위해 이동하는 점 제거</div>
+                <div class="completed-task">연도 활성화 표시만 유지</div>
+                <div class="completed-task">연도 텍스트 겹침 해결: 기본 상태 숨김 (opacity: 0), 호버/활성화 시 표시</div>
+                <div class="completed-task">빽빽한 구간(1995년, 2003년) 겹침 완전 해결</div>
+                <div class="completed-task">부드러운 전환 효과: 연도 텍스트 페이드 인/아웃 애니메이션</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">🛠️</span>기술 스택</h2>
+            
+            <h3>Frontend</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-title">HTML5</div>
+                    <p>시맨틱 마크업</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-title">CSS3</div>
+                    <p>Flexbox, Grid, Transitions, Media Queries</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-title">JavaScript</div>
+                    <p>Vanilla JS, DOM 조작, 이벤트 처리</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-title">SVG</div>
+                    <p>벡터 그래픽 (17개 파일)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">📂</span>파일 구조</h2>
+            <div class="file-structure">
+batman/<br>
+├── index.html              # 메인 페이지<br>
+├── history.html            # 프로젝트 히스토리 페이지<br>
+├── batman.svg              # 원본 애니메이션 파일<br>
+├── batman-1965.svg         # 1965년 로고<br>
+├── batman-1966.svg         # 1966년 로고<br>
+├── batman-1977.svg         # 1977년 로고<br>
+├── batman-1983.svg         # 1983년 로고<br>
+├── batman-1986.svg         # 1986년 로고<br>
+├── batman-1992.svg         # 1992년 로고<br>
+├── batman-1993.svg         # 1993년 로고<br>
+├── batman-1995-forever.svg # 1995년 포에버 로고<br>
+├── batman-1995-chronicles.svg # 1995년 크로니클 로고<br>
+├── batman-1998.svg         # 1998년 로고<br>
+├── batman-1999.svg         # 1999년 로고<br>
+├── batman-2001.svg         # 2001년 로고<br>
+├── batman-2003-gothom.svg  # 2003년 고담 로고<br>
+├── batman-2003-dead-end.svg # 2003년 데드엔드 로고<br>
+├── batman-2005.svg         # 2005년 로고<br>
+├── batman-2008.svg         # 2008년 로고<br>
+└── HISTORY.md              # 프로젝트 작업 내역
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">🚀</span>주요 기능</h2>
+            
+            <h3>1. SVG 애니메이션</h3>
+            <ul>
+                <li>16개 배트맨 로고의 32초 모핑 애니메이션</li>
+                <li>부드러운 형태 변환 효과</li>
+            </ul>
+
+            <h3>2. 인터랙티브 타임라인</h3>
+            <ul>
+                <li>1965년부터 2008년까지 16개 연도 포인트</li>
+                <li>클릭 시 해당 연도 로고로 즉시 전환</li>
+                <li>호버 시 작품 제목 툴팁 표시</li>
+                <li>활성 상태 시각화 (백색 하이라이트)</li>
+            </ul>
+
+            <h3>3. 컨트롤 시스템</h3>
+            <ul>
+                <li>"자동 애니메이션 재생/정지" 버튼</li>
+                <li>"처음부터" 리셋 버튼</li>
+                <li>부드러운 전환 효과</li>
+            </ul>
+
+            <h3>4. 반응형 디자인</h3>
+            <ul>
+                <li>데스크톱, 태블릿, 모바일 모든 기기 지원</li>
+                <li>모바일에서 수평 스크롤 타임라인</li>
+                <li>적응형 텍스트 크기 및 레이아웃</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">🎨</span>디자인 특징</h2>
+            
+            <h3>색상 테마</h3>
+            <ul>
+                <li><strong>배경:</strong> 다크 블루 그라데이션</li>
+                <li><strong>주요 컬러:</strong> 파란색 계열 (#60a5fa)</li>
+                <li><strong>활성 컬러:</strong> 백색 (#ffffff)</li>
+                <li><strong>텍스트:</strong> 흰색 및 회색 계열</li>
+            </ul>
+
+            <h3>시각적 효과</h3>
+            <ul>
+                <li>레트로 TV 프레임 디자인</li>
+                <li>글래스모피즘 디자인</li>
+                <li>부드러운 호버 애니메이션</li>
+                <li>로고 배경 그라데이션</li>
+                <li>플로팅 애니메이션</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">📱</span>반응형 브레이크포인트</h2>
+            <ul>
+                <li><strong>데스크톱:</strong> 769px 이상</li>
+                <li><strong>태블릿:</strong> 480px - 768px</li>
+                <li><strong>모바일:</strong> 480px 이하</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">🔧</span>성능 최적화</h2>
+            <ul>
+                <li>CSS Transitions으로 부드러운 애니메이션</li>
+                <li>디바운싱으로 빠른 클릭 처리</li>
+                <li>개별 SVG 파일로 로딩 최적화</li>
+                <li>GPU 가속 활용</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">📚</span>참고 자료</h2>
+            <ul>
+                <li>원본 참고: <a href="http://tavmjong.free.fr/blog/?p=1262" style="color: #60a5fa;">http://tavmjong.free.fr/blog/?p=1262</a></li>
+                <li>SVG 애니메이션 기법</li>
+                <li>CSS 그라데이션 및 트랜지션</li>
+                <li>반응형 웹 디자인 패턴</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2><span class="emoji">✨</span>최종 결과물</h2>
+            <p>사용자가 배트맨 로고의 역사적 변화를 직관적으로 탐색할 수 있는 인터랙티브 웹페이지. 레트로 TV 프레임 안에서 1965년부터 2008년까지 16개의 배트맨 로고가 자동으로 모핑되며, 클릭 가능한 타임라인을 통해 특정 연도의 로고를 즉시 확인할 수 있습니다. SVG의 강력한 기능과 정교한 동기화를 통해 시각적으로 매력적이고 사용하기 쉬운 경험을 제공하며, 모든 디바이스에서 최적화된 반응형 디자인을 보장합니다.</p>
+
+            <h3>주요 특징</h3>
+            <ul>
+                <li><strong>레트로 TV 디자인:</strong> 네온사인 볼트와 스크린 반사 효과가 있는 빈티지 TV 프레임</li>
+                <li><strong>다크 블루 테마:</strong> 세련된 다크 블루 그라데이션 배경과 파란색 UI 요소</li>
+                <li><strong>정확한 동기화:</strong> SVG 애니메이션과 타임라인 활성화가 완벽하게 동기화</li>
+                <li><strong>스마트 UI:</strong> 필요할 때만 표시되는 연도 텍스트로 깔끔한 인터페이스</li>
+                <li><strong>완벽한 반응형:</strong> 데스크톱부터 모바일까지 모든 화면에서 최적화</li>
+                <li><strong>부드러운 전환:</strong> 디바운싱과 CSS 트랜지션으로 매끄러운 사용자 경험</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="index.html" class="back-to-main" style="position: static; display: inline-block;">🦇 메인 페이지로 돌아가기</a>
+        </div>
+    </div>
+
+    <script>
+        // 스크롤 진행률 표시
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+        });
+
+        // 부드러운 스크롤 애니메이션
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // 섹션들에 스크롤 애니메이션 적용
+            document.querySelectorAll('.section, .step').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
